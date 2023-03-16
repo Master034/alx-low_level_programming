@@ -1,9 +1,11 @@
 #include <stdio.h>
 
 /**
- * Use Put
+ * main - Use puts
  *
+ * Return: Always 0 shows (success)
  */
+
 int main(void){
  puts("\"Programming is like building a multilingual puzzle");
 	 return(0);
