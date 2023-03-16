@@ -2,9 +2,9 @@
 #include <unistd.h>
 
 /**
- *Print Using Write
- *main - Program Entry
- * Return : 1
+ * main - Entry point for the program
+ *
+ * Return: Always 1 (Success)
  */
 
 int main(void)
