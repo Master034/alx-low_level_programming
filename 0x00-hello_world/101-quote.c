@@ -3,8 +3,8 @@
 
 /**
  *Print Using Write
- *
- * Return 1
+ *main - Program Entry
+ * Return : 1
  */
 
 int main(void)
