@@ -27,10 +27,10 @@ char *create_array(unsigned int size, char c)
 
 	for (i = 0; i < size; i++)
 	{
-		*(p + i) = c;
+		*(m + i) = c;
 	}
 
-	*(p + i) = '\0';
+	*(m + i) = '\0';
 
-	return (p);
+	return (m);
 }
