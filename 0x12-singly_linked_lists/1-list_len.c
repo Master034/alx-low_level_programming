@@ -7,13 +7,13 @@
 
 size_t list_len(const list_t *h)
 {
-	size_t nodes;
+	size_t c_nodes;
 
-	nodes = 0;
+	c_nodes = 0;
 	while (h != NULL)
 	{
 		h = h->next;
-		nodes++;
+		c_nodes++;
 	}
-	return (nodes);
+	return (c_nodes);
 }
