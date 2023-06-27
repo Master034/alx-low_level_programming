@@ -1,6 +1,9 @@
 #include "main.h"
 
-
+/**
+ * _print_integer - Print Numbers
+ * Return: number of char printed
+ */
 void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags, int l_modifier)
 {
 
