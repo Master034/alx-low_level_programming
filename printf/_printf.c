@@ -1,7 +1,9 @@
 #include "main.h"
 
 /**
- * _printf -
+ * _printf - printf
+ * @format:format
+ * Return:integer
  */
 
 int _printf(const char *format, ...)
