@@ -9,6 +9,7 @@ int _printf(const char *format, ...)
 	flags_t flags = {0, 0, 0};
 	va_list args;
 	int count  = 0;
+	int l_modifier = 0;
 
 	va_start(args, format);
 	while (*format != '\0')
@@ -30,6 +31,11 @@ int _printf(const char *format, ...)
 					flags.hash = 1;
 					break;
 				}
+				format++;
+			}
+			if (*format == 'l' || *format == 'h')
+			{
+				l_modifier = *format;
 				format++;
 			}
 			switch (*format)
@@ -68,42 +74,42 @@ int _printf(const char *format, ...)
 				case 'u':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 10, 0,&flags);
+						_print_integer(num, 10, 0,&flags,l_modifier);
 						count += sizeof(unsigned int) * 8;
 					}
 					break;
 				case 'o':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 8, 0,&flags);
+						_print_integer(num, 8, 0,&flags,l_modifier);
 						count += sizeof(unsigned int) * 3;
 					}
 					break;
 				case 'd':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 16, 0,&flags);
+						_print_integer(num, 16, 0,&flags,l_modifier);
 						count += sizeof(unsigned int) * 2;
 					}
 					break;
 				case 'i':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 16, 1,&flags);
+						_print_integer(num, 16, 1,&flags,l_modifier);
 						count += sizeof(unsigned int) * 2;
 					}
 					break;
 				case 'x':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 16, 0,&flags);
+						_print_integer(num, 16, 0,&flags,l_modifier);
 						count += sizeof(unsigned int) * 2;
 					}
 					break;
 				case 'X':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 16, 1,&flags);
+						_print_integer(num, 16, 1,&flags,l_modifier);
 						count += sizeof(unsigned int) * 2; 
 					}
 					break;
@@ -116,7 +122,7 @@ int _printf(const char *format, ...)
 				case 'p':
 					{
 						void *ptr = va_arg(args, void *);
-						_print_pointer(ptr, &flags);
+						_print_pointer(ptr, &flags,l_modifier);
 						count += sizeof(void *) * 2;
 					}
 					break;
