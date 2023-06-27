@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-void _print_integer(unsigned int num, int base, int uppercase, flags_t flags)
+void _print_integer(unsigned int num, int base, int uppercase,int width, flags_t flags)
 {
 
 	char buffer[sizeof(unsigned int) * 8 + 1];
