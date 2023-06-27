@@ -6,9 +6,9 @@
 
 int _printf(const char *format, ...)
 {
+	flags_t flags = {0, 0, 0};
 	va_list args;
 	int count  = 0;
-	int width = 0;
 
 	va_start(args, format);
 	while (*format != '\0')
@@ -16,7 +16,6 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			flags_t flags = {0, 0, 0};
 			while (*format == '+' || *format == ' ' || *format == '#')
 		       	{
 			       	switch (*format)
@@ -33,12 +32,6 @@ int _printf(const char *format, ...)
 				}
 				format++;
 			}
-			while (*format >= '0' && *format <= '9')
-			{
-				width = (width * 10) + (*format - '0');
-				format++;
-			}
-			
 			switch (*format)
 			{
 				 case 'b':
@@ -76,35 +69,35 @@ int _printf(const char *format, ...)
 				case 'u':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 10, 0,width,flags);
+						_print_integer(num, 10, 0,&flags);
 						count += sizeof(unsigned int) * 8;
 					}
 					break;
 				case 'o':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 8, 0,width,flags);
+						_print_integer(num, 8, 0,&flags);
 						count += sizeof(unsigned int) * 3;
 					}
 					break;
 				case 'x':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 16, 0,width,flags);
+						_print_integer(num, 16, 0,&flags);
 						count += sizeof(unsigned int) * 2;
 					}
 					break;
 				case 'X':
 					{
 						unsigned int num = va_arg(args, unsigned int);
-						_print_integer(num, 16, 1,width,flags);
+						_print_integer(num, 16, 1,&flags);
 						count += sizeof(unsigned int) * 2; 
 					}
 					break;
 				case 'S':
 					{
 						const char *str = va_arg(args, const char *);
-						_print_string(str, width, flags);
+						_print_string(str);
 					}
 					break;
 			}

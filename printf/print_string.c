@@ -1,6 +1,6 @@
 #include "main.h"
 
-void _print_string(const char *str,int width, flags_t flags)
+void _print_string(const char *str)
 {
 	char buffer[BUFFER_SIZE];
 	char *buffer_ptr = buffer;
