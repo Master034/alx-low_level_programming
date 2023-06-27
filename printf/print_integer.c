@@ -29,6 +29,8 @@ void _print_formatted_integer(unsigned long int num, int base, int uppercase, fl
 	char digits[] = "0123456789abcdef";
 	int index = sizeof(buffer) - 1;
 	int n2 = num;
+	int num_digits = sizeof(buffer) - index - 1;
+	int padding = width - num_digits;
 	
 	if (flags->plus && n2 >= 0)
 	{
@@ -54,8 +56,6 @@ void _print_formatted_integer(unsigned long int num, int base, int uppercase, fl
 		buffer[--index] = digits[n2 % base];
 		n2 /= base;
 	}
-	int num_digits = sizeof(buffer) - index - 1;
-	int padding = width - num_digits;
 	while (padding > 0)
 	{
 		_putchar(' ');
