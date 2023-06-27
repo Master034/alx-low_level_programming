@@ -79,6 +79,20 @@ int _printf(const char *format, ...)
 						count += sizeof(unsigned int) * 3;
 					}
 					break;
+				case 'd':
+					{
+						unsigned int num = va_arg(args, unsigned int);
+						_print_integer(num, 16, 0,&flags);
+						count += sizeof(unsigned int) * 2;
+					}
+					break;
+				case 'i':
+					{
+						unsigned int num = va_arg(args, unsigned int);
+						_print_integer(num, 16, 1,&flags);
+						count += sizeof(unsigned int) * 2;
+					}
+					break;
 				case 'x':
 					{
 						unsigned int num = va_arg(args, unsigned int);

@@ -4,6 +4,7 @@ int main()
 {
 	void *ptr = malloc(sizeof(int));
 	unsigned int b = 98;
+	int num = 101;
 
 	_printf("Hello, %s! Today is %c. and %b \n", "John", 'S',b);
 	_printf("Octal %o \n", b);
@@ -12,7 +13,7 @@ int main()
 	_printf("Hexadecima Upper %X \n", b);
 	_printf("%S\n", "Best\nSchool");
 	_printf("Pointer value: %p\n", ptr);
-
+	_printf("Number with '+' flag: %+d\n", num);
 	free(ptr);
 	return (0);
 }
