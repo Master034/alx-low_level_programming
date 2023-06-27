@@ -4,26 +4,26 @@
  * _print_integer - Print Numbers
  * Return: number of char printed
  */
-void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags, int l_modifier)
+void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags, int l_modifier, int width)
 {
 
 	if (l_modifier == 'l')
 	{
 		long int l_num = (long int)num;
-		_print_formatted_integer(l_num, base, uppercase, flags);
+		_print_formatted_integer(l_num, base, uppercase, flags,width);
 	}
 	else if (l_modifier == 'h')
 	{
 		short int h_num = (short int)num;
-		_print_formatted_integer(h_num, base, uppercase, flags);
+		_print_formatted_integer(h_num, base, uppercase, flags,width);
 	}
 	else
 	{
-		_print_formatted_integer(num, base, uppercase, flags);
+		_print_formatted_integer(num, base, uppercase, flags,width);
 	}
 }
 
-void _print_formatted_integer(unsigned long int num, int base, int uppercase, flags_t *flags)
+void _print_formatted_integer(unsigned long int num, int base, int uppercase, flags_t *flags, int width)
 {
 	char buffer[sizeof(unsigned long int) * 8 + 1];
 	char digits[] = "0123456789abcdef";
@@ -53,6 +53,13 @@ void _print_formatted_integer(unsigned long int num, int base, int uppercase, fl
 	{
 		buffer[--index] = digits[n2 % base];
 		n2 /= base;
+	}
+	int num_digits = sizeof(buffer) - index - 1;
+	int padding = width - num_digits;
+	while (padding > 0)
+	{
+		_putchar(' ');
+		padding--;
 	}
 	while (buffer[index] != '\0')
 	{
