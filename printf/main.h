@@ -25,6 +25,6 @@ typedef struct flags
 	int hash;
 } flags_t;
 
-void _print_pointer(void *ptr, flags_t *flags);
-void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags);
+void _print_pointer(void *ptr, flags_t *flags, int l_modifier);
+void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags, int l_modifier);
 #endif
