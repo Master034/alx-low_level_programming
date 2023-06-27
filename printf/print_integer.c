@@ -1,14 +1,32 @@
 #include "main.h"
 
 
-void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags)
+void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags, int l_modifier)
 {
 
-	char buffer[sizeof(unsigned int) * 8 + 1];
+	if (l_modifier == 'l')
+	{
+		long int l_num = (long int)num;
+		_print_formatted_integer(l_num, base, uppercase, flags);
+	}
+	else if (l_modifier == 'h')
+	{
+		short int h_num = (short int)num;
+		_print_formatted_integer(h_num, base, uppercase, flags);
+	}
+	else
+	{
+		_print_formatted_integer(num, base, uppercase, flags);
+	}
+}
+
+void _print_formatted_integer(unsigned long int num, int base, int uppercase, flags_t *flags)
+{
+	char buffer[sizeof(unsigned long int) * 8 + 1];
 	char digits[] = "0123456789abcdef";
 	int index = sizeof(buffer) - 1;
-	int n2 = num;
-
+	unsigned long int n2 = num;
+	
 	if (flags->plus && n2 >= 0)
 	{
 		_putchar('+');
@@ -17,15 +35,16 @@ void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags)
 	{
 		_putchar(' ');
 	}
-
+	
 	if (n2 == 0)
 	{
 		_putchar('0');
 		return;
 	}
 	if (uppercase)
+	{
 		digits[10] = 'A';
-	
+	}
 	buffer[index] = '\0';
 	while (n2 > 0)
 	{
