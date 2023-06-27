@@ -49,7 +49,6 @@ int _printf(const char *format, ...)
 						count++;
 					}
 					break;
-
 				case 's':
 					{
 						const char *s = va_arg(args, const char *);
@@ -100,6 +99,14 @@ int _printf(const char *format, ...)
 						_print_string(str);
 					}
 					break;
+				case 'p':
+					{
+						void *ptr = va_arg(args, void *);
+						_print_pointer(ptr, &flags);
+						count += sizeof(void *) * 2;
+					}
+					break;
+
 			}
 		}
 		else
