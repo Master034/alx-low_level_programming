@@ -28,7 +28,7 @@ void _print_formatted_integer(unsigned long int num, int base, int uppercase, fl
 	char buffer[sizeof(unsigned long int) * 8 + 1];
 	char digits[] = "0123456789abcdef";
 	int index = sizeof(buffer) - 1;
-	unsigned long int n2 = num;
+	int n2 = num;
 	
 	if (flags->plus && n2 >= 0)
 	{
