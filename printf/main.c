@@ -19,6 +19,7 @@ int main()
 	_printf("Long Integer (%%ld): %ld\n", l_value);
 	_printf("Long Unsigned Integer (%%lu): %lu\n", l_value);
 	_printf("Short Integer (%%hi): %hi\n", h_value);
+	_printf("Width Value: %5d\n", num);
 	free(ptr);
 	return (0);
 }
