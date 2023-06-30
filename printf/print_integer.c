@@ -2,6 +2,12 @@
 
 /**
  * _print_integer - Print Numbers
+ * @num: Number
+ * @base:base
+ * @uppercase:uppercase
+ * @flags:flags
+ * @l_modifier:modifier
+ * @width:width
  * Return: number of char printed
  */
 void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags, int l_modifier, int width)
@@ -23,6 +29,15 @@ void _print_integer(unsigned int num, int base, int uppercase, flags_t *flags, i
 	}
 }
 
+/**
+ * _print_formatted_integer - Print Numbers
+ * @num: Number
+ * @base:base
+ * @uppercase:uppercase
+ * @flags:flags
+ * @width:width
+ * Return: number of char printed
+ */
 void _print_formatted_integer(unsigned long int num, int base, int uppercase, flags_t *flags, int width)
 {
 	char buffer[sizeof(unsigned long int) * 8 + 1];
