@@ -1,4 +1,4 @@
-#Task 0: Binary to Unsigned Int Conversion Function
+# Task 0: Binary to Unsigned Int Conversion Function
 This function converts a binary number represented as a string to an unsigned integer value.
 ## Prototype
 
@@ -6,7 +6,7 @@ This function converts a binary number represented as a string to an unsigned in
 unsigned int binary_to_uint(const char *b);
 ```
 
-#Task 1: Binary Representation Printer
+# Task 1: Binary Representation Printer
 
 This function prints the binary representation of a given number.
 
