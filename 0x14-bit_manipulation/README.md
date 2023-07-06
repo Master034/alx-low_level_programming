@@ -25,3 +25,12 @@ This function returns the value of a bit at a given index.
 ```c
 int get_bit(unsigned long int n, unsigned int index);
 ```
+# Task 3: Set Bit at a Given Index
+
+This function sets the value of a bit at a given index.
+
+## Prototype
+
+```c
+int set_bit(unsigned long int *n, unsigned int index);
+```
