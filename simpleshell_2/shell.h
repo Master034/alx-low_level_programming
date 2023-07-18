@@ -6,4 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 
+void displayPrompt();
+int executeCommand(const char* command);
+
 #endif
