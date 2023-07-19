@@ -4,6 +4,9 @@ int main(void) {
     char *command = NULL;
     size_t bufsize = 0;
     ssize_t characters;
+    char *path_env = getenv("PATH");
+    char *path_token = strtok(path_env, ":");
+    char path_command[BUFFER_SIZE];
 
     while (1)
     {
@@ -33,10 +36,6 @@ int main(void) {
             if (fork() == 0)
             {
                 execve(args[0], args, NULL);
-                char *path_env = getenv("PATH");
-                char *path_token = strtok(path_env, ":");
-                char path_command[BUFFER_SIZE];
-                
                 while (path_token != NULL) {
                     snprintf(path_command, BUFFER_SIZE, "%s/%s", path_token, args[0]);
                     execve(path_command, args, environ);
