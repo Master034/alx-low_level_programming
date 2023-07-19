@@ -28,7 +28,6 @@ int main(void) {
         {
             if (fork() == 0)
             {
-                // Child process
                 char *args[] = {command, NULL};
                 execve(command, args, NULL);
                 perror("execve");
@@ -36,7 +35,6 @@ int main(void) {
             }
             else
             {
-                // Parent process
                 wait(NULL); 
             }
         }
