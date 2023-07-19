@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 
 #define BUFFER_SIZE 1024
+#define MAX_ARGS 10
 
 void displayPrompt();
 int executeCommand(const char* command);
