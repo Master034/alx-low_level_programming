@@ -24,10 +24,9 @@ int main(void) {
             exit(EXIT_FAILURE);
         }
         if (characters > 0 && command[characters - 1] == '\n')
-        {
             command[characters - 1] = '\0';
-        }
-   
+        if (strcmp(command, "exit") == 0)
+            break;
         if (command[0] != '\0')
         {
             char *args[MAX_ARGS];
@@ -41,7 +40,6 @@ int main(void) {
                     execve(path_command, args, environ);
                     path_token = strtok(NULL, ":");
                 }
-                
                 perror("execve");
                 exit(EXIT_FAILURE);
             }
