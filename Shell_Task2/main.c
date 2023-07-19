@@ -24,20 +24,21 @@ int main(void) {
         {
             command[characters - 1] = '\0';
         }
+   
         if (command[0] != '\0')
         {
+            char *args[MAX_ARGS];
+            
+            tokenizeCommand(command, args);
             if (fork() == 0)
             {
-                char **args = malloc(sizeof(char *) * 2);
-                args[0] = command;
-                args[1] = NULL;
-                execve(command, args, NULL);
+                execve(args[0], args, NULL);
                 perror("execve");
                 exit(EXIT_FAILURE);
             }
             else
             {
-                wait(NULL); 
+                wait(NULL);
             }
         }
     }
