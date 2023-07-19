@@ -28,7 +28,9 @@ int main(void) {
         {
             if (fork() == 0)
             {
-                char *args[] = {command, NULL};
+                char **args = malloc(sizeof(char *) * 2);
+                args[0] = command;
+                args[1] = NULL;
                 execve(command, args, NULL);
                 perror("execve");
                 exit(EXIT_FAILURE);
