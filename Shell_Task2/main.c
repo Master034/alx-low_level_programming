@@ -32,7 +32,17 @@ int main(void) {
             tokenizeCommand(command, args);
             if (fork() == 0)
             {
-                execve(args[0], args, NULL);
+                execve(args[0], args, environ);
+                char *path_env = getenv("PATH");
+                char *path_token = strtok(path_env, ":");
+                char path_command[BUFFER_SIZE];
+                
+                while (path_token != NULL) {
+                    snprintf(path_command, BUFFER_SIZE, "%s/%s", path_token, args[0]);
+                    execve(path_command, args, environ);
+                    path_token = strtok(NULL, ":");
+                }
+                
                 perror("execve");
                 exit(EXIT_FAILURE);
             }
