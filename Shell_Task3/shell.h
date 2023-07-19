@@ -10,6 +10,8 @@
 #define BUFFER_SIZE 1024
 #define MAX_ARGS 10
 
+extern char **environ;
+
 void tokenizeCommand(char *command, char **args);
 
 #endif
