@@ -9,12 +9,13 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
     int c;
     size_t i = 0;
     
-    if (lineptr == NULL || n == NULL || stream == NULL) {
-        return -1; // Invalid input parameters
-    }
-    if (*lineptr == NULL || *n < INITIAL_BUFFER_SIZE) {
+    if (lineptr == NULL || n == NULL || stream == NULL)
+        return -1; 
+    if (*lineptr == NULL || *n < INITIAL_BUFFER_SIZE)
+    {
         *lineptr = (char*)malloc(INITIAL_BUFFER_SIZE);
-        if (*lineptr == NULL) {
+        if (*lineptr == NULL)
+        {
             perror("Memory allocation failed");
             return -1;
         }
@@ -26,7 +27,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
         { 
             size_t new_size = *n * 2;
             char* temp = (char*)realloc(*lineptr, new_size);
-            if (temp == NULL) {
+            if (temp == NULL)
+            {
                 perror("Memory reallocation failed");
                 return -1;
             }
