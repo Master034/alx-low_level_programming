@@ -8,12 +8,12 @@
 void handle_exit(char *command, char **args)
 {
     int exit_status = 0;
-    int i = 0;
+    int i;
 
     if (args[1] != NULL)
         exit_status = atoi(args[1]);
     free(command);
-    for (i ; args[i] != NULL; i++)
+    for (i = 0 ; args[i] != NULL; i++)
         free(args[i]);
     exit(exit_status);
 }
