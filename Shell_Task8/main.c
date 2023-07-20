@@ -26,8 +26,6 @@ int main(void) {
         }
         if (characters > 0 && command[characters - 1] == '\n')
             command[characters - 1] = '\0';
-        if (strcmp(command, "exit") == 0)
-            break;
         else if (strcmp(command, "env") == 0)
             print_environment();
         if (command[0] != '\0')
@@ -35,6 +33,8 @@ int main(void) {
             char *args[MAX_ARGS];
             
             tokenizeCommand(command, args);
+            if (strcmp(args[0], "exit") == 0)
+                _exit(command, args);
             if (fork() == 0)
             {
                 execve(args[0], args, NULL);
