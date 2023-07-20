@@ -12,10 +12,7 @@ char* _strtok(char* str, const char* delim)
     static bool end_of_string = false;
     
     if (str != NULL)
-    {
         current_str = str;
-        end_of_string = false;
-    }
     if (current_str == NULL || end_of_string)
         return (NULL);
     char* token_start = current_str;
