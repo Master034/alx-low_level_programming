@@ -2,6 +2,9 @@
 
 /**
  * _getline - Gets the line
+ * @n:pointer to a size_t variable.
+ * @lineptr:double pointer to a character array
+ * @stream:pointer to a FILE objec
  * Return: Number of Characters
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
