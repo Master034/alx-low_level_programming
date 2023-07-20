@@ -9,6 +9,7 @@
 
 #define BUFFER_SIZE 1024
 #define MAX_ARGS 10
+#define INITIAL_BUFFER_SIZE 64
 
 extern char **environ;
 
