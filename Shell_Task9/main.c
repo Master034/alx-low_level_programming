@@ -42,7 +42,6 @@ int handle_unsetenv_command(char **args) {
         write(2, "unsetenv: Unable to unset environment variable\n", 47);
         return -1;
     }
-
     return 0;
 }
 
@@ -79,9 +78,11 @@ int main(void) {
             
             tokenizeCommand(command, args);
             if (strcmp(args[0], "exit") == 0)
-            {
                 handle_exit(command, args);
-            }
+            else if (strcmp(args[0], "setenv") == 0)
+                handle_setenv_command(args);
+            else if (strcmp(args[0], "unsetenv") == 0)
+                handle_unsetenv_command(args);
             if (fork() == 0)
             {
                 execve(args[0], args, NULL);
