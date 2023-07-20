@@ -14,6 +14,6 @@ extern char **environ;
 
 void tokenizeCommand(char *command, char **args);
 void print_environment();
-char* _getline();
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 #endif
