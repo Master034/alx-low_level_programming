@@ -14,5 +14,6 @@ extern char **environ;
 
 void tokenizeCommand(char *command, char **args);
 void print_environment();
+char* _getline();
 
 #endif
