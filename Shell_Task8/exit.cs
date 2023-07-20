@@ -1,11 +1,12 @@
 #include "shell.h"
 
 /**
- * _exit-Checks exit status
+ * handle_exit-Checks exit status
  * @args:Array of arguments
  * Return:Nothing
  */
-void _exit(char *command, char **args) {
+void handle_exit(char *command, char **args)
+{
     int exit_status = 0;
     int i = 0;
 
