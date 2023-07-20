@@ -6,7 +6,7 @@ int main(void) {
     size_t bufsize = 0;
     ssize_t characters;
     char *path_env = getenv("PATH");
-    char *path_token = strtok(path_env, ":");
+    char *path_token = _strtok(path_env, ":");
     char path_command[BUFFER_SIZE];
 
     while (1)
