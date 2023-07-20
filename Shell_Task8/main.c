@@ -34,7 +34,9 @@ int main(void) {
             
             tokenizeCommand(command, args);
             if (strcmp(args[0], "exit") == 0)
+            {
                 handle_exit(command, args);
+            }
             if (fork() == 0)
             {
                 execve(args[0], args, NULL);
