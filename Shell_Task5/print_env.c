@@ -1,8 +1,9 @@
 #include "shell.h"
 
 /**
-    
-    
+ * print_environment - Prints the Environment
+ * Return: void
+ */ 
 void print_environment()
 {
     char **env = environ;
