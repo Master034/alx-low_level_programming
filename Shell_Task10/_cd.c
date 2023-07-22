@@ -1,4 +1,5 @@
 #include "shell.h"
+char prompt_format[BUFFER_SIZE] = "simple_shell$ ";
 
 void update_PWD_env(char *new_path)
 {
