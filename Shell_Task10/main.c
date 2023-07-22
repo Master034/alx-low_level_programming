@@ -83,6 +83,8 @@ int main(void) {
                 handle_setenv_command(args);
             else if (strcmp(args[0], "unsetenv") == 0)
                 handle_unsetenv_command(args);
+            else if (strcmp(args[0], "cd") == 0)
+                handle_cd_command(args);
             if (fork() == 0)
             {
                 execve(args[0], args, NULL);
