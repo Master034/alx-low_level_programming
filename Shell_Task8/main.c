@@ -5,7 +5,7 @@
  * @args:Array of arguments
  * Return:Nothing
  */
-void handle_exit(char **args)
+void handle_exit(char *command, char **args)
 {
     int exit_status = 0;
     int i;
@@ -14,6 +14,8 @@ void handle_exit(char **args)
         exit_status = atoi(args[1]);
     for (i = 0 ; args[i] != NULL; i++)
         free(args[i]);
+    if (args[0] != NULL)
+        free(command);
     exit(exit_status);
 }
 
@@ -51,7 +53,7 @@ int main(void) {
             tokenizeCommand(command, args);
             if (strcmp(args[0], "exit") == 0)
             {
-                handle_exit(args);
+                handle_exit(command, args);
             }
             if (fork() == 0)
             {
