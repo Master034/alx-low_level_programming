@@ -27,6 +27,11 @@ typedef struct liststr
 	struct liststr *next;
 } list_n;
 
+typedef struct getinfo
+{
+	list_n *env;
+} info_d;
+
 void tokenizeCommand(char *command, char **args);
 void print_environment();
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
