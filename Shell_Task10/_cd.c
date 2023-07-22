@@ -1,5 +1,15 @@
 #include "shell.h"
 
+void update_PWD_env(char *new_path)
+{
+    char *current_pwd = getenv("PWD");
+
+    if (current_pwd) {
+        setenv("OLDPWD", current_pwd, 1);
+    }
+    setenv("PWD", new_path, 1);
+}
+
 int handle_cd_command(char **args)
 {
     if (args[1] == NULL || strcmp(args[1], "~") == 0) {
