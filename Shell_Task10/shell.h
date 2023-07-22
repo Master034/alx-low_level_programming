@@ -13,6 +13,8 @@
 #define INITIAL_BUFFER_SIZE 64
 
 extern char **environ;
+extern char prompt_format[BUFFER_SIZE] = "simple_shell (%s)$ ";
+extern char current_dir[BUFFER_SIZE] = "";
 
 /**
  * struct liststr - list
