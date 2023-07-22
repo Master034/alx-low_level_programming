@@ -34,7 +34,7 @@ int handle_cd_command(char **args)
                 return -1;
             }
             update_PWD_env(old_pwd);
-            printf("%s\n", old_pwd); // Print the new current directory
+            printf("%s\n", old_pwd); 
             return 0;
         } else {
             fprintf(stderr, "cd: OLDPWD not set\n");
