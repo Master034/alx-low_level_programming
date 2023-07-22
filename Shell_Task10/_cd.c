@@ -1,5 +1,4 @@
 #include "shell.h"
-char prompt_format[BUFFER_SIZE] = "simple_shell$ ";
 
 void update_PWD_env(char *new_path)
 {
@@ -9,7 +8,6 @@ void update_PWD_env(char *new_path)
         setenv("OLDPWD", current_pwd, 1);
     }
     setenv("PWD", new_path, 1);
-    snprintf(prompt_format, BUFFER_SIZE, "%s%s$ ", new_path, "> ");
 }
 
 int handle_cd_command(char **args)
