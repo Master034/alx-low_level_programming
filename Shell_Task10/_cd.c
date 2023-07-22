@@ -34,6 +34,7 @@ int handle_cd_command(char **args)
                 return -1;
             }
             update_PWD_env(old_pwd);
+            printf("%s\n", old_pwd); // Print the new current directory
             return 0;
         } else {
             fprintf(stderr, "cd: OLDPWD not set\n");
@@ -44,6 +45,13 @@ int handle_cd_command(char **args)
         perror("cd");
         return -1;
     }
-    update_PWD_env(args[1]);
+    char cwd[BUFFER_SIZE];
+    if (getcwd(cwd, BUFFER_SIZE) != NULL) {
+        update_PWD_env(cwd);
+    } else {
+        perror("cd");
+        return -1;
+    }
+    printf("%s\n", cwd);
     return 0;
 }
