@@ -13,6 +13,8 @@ void update_PWD_env(char *new_path)
 int handle_cd_command(char **args)
 {
     char cwd[BUFFER_SIZE];
+    char prompt_format[BUFFER_SIZE] = "simple_shell (%s)$ ";
+    char current_dir[BUFFER_SIZE] = "";
     
     if (args[1] == NULL || strcmp(args[1], "~") == 0) {
         char *home_dir = getenv("HOME");
