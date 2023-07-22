@@ -53,6 +53,8 @@ int main(void) {
     char *path_token = _strtok(path_env, ":");
     char path_command[BUFFER_SIZE];
     char prompt[BUFFER_SIZE];
+    char prompt_format[BUFFER_SIZE] = "simple_shell (%s)$ ";
+    char current_dir[BUFFER_SIZE] = "";
 
     while (1)
     {
