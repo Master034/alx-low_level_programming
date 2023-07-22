@@ -49,6 +49,8 @@ int handle_cd_command(char **args)
     }
     if (getcwd(cwd, BUFFER_SIZE) != NULL) {
         update_PWD_env(cwd);
+        strncpy(current_dir, cwd, BUFFER_SIZE - 1);
+        current_dir[BUFFER_SIZE - 1] = '\0';
     } else {
         perror("cd");
         return -1;
