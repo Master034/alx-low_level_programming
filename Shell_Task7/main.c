@@ -30,7 +30,7 @@ int main(void) {
             break;
         else if (strcmp(command, "env") == 0)
             print_environment();
-        if (command[0] != '\0')
+        else (command[0] != '\0')
         {
             char *args[MAX_ARGS];
             
@@ -41,7 +41,7 @@ int main(void) {
                 while (path_token != NULL) {
                     snprintf(path_command, BUFFER_SIZE, "%s/%s", path_token, args[0]);
                     execve(path_command, args, environ);
-                    path_token = strtok(NULL, ":");
+                    path_token = _strtok(NULL, ":");
                 }
                 perror("execve");
                 exit(EXIT_FAILURE);
