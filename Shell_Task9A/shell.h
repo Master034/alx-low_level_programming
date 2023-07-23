@@ -19,5 +19,6 @@ void print_environment();
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char* _strtok(char* str, const char* delim);
 void _handle_exit(char *command);
+int _setenv(const char *name, const char *value, int overwrite);
 
 #endif
