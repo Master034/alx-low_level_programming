@@ -4,7 +4,7 @@
  * cd - Change the current directory of the process.
  * @path: The directory path to change to (can be NULL for default).
  */
-void cd(const char *path)
+void _cd(const char *path)
 {
     char current_path[BUFFER_SIZE];
     char new_path[BUFFER_SIZE];
