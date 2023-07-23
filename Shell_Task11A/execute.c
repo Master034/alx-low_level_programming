@@ -23,18 +23,18 @@ void execute_commands(const char *commands)
         trimmed_command = semicolon_token;
         while (*trimmed_command == ' ')
             trimmed_command++;
-        int len = strlen(trimmed_command);
+        len = strlen(trimmed_command);
         while (len > 0 && trimmed_command[len - 1] == ' ')
             trimmed_command[--len] = '\0';
 
         if (trimmed_command[0] != '\0')
         {
-            char *token = _strtok(trimmed_command, " ");
+            token = _strtok(trimmed_command, " ");
             command = token;
             token = _strtok(NULL, " ");
             while (*command == ' ')
                 command++;
-            int len = strlen(command);
+            len = strlen(command);
             while (len > 0 && command[len - 1] == ' ')
                 command[--len] = '\0';
 
@@ -42,7 +42,7 @@ void execute_commands(const char *commands)
             {
                 char *args[MAX_ARGS];
                 args[0] = command;
-                int arg_count = 1;
+                arg_count = 1;
                 while (token != NULL)
                 {
                     while (*token == ' ')
