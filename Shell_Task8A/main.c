@@ -8,9 +8,7 @@ int main(void) {
     char *path_env = getenv("PATH");
     char *path_token = _strtok(path_env, ":");
     char path_command[BUFFER_SIZE];
-    pid_t pid = 0;
-    int status;
-
+    
     while (1)
     {
         printf("simple_shell$ ");
