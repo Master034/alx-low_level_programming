@@ -31,8 +31,6 @@ int main(void) {
         {
             execute_commands(command);
         }
-         
-         fflush(stdin);
     }
     free(command);
     return 0;
