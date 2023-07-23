@@ -1,16 +1,22 @@
 #include "shell.h"
 
 void handle_alias_command(char **args) {
+    int i;
+    char *arg  = NULL;
+    char *name = NULL;
+    char *value = NULL;
+    
     if (args[1] == NULL) {
-        for (int i = 0; i < num_aliases; i++) {
+        for (i = 0; i < num_aliases; i++) {
             printf("%s='%s'\n", aliases[i].name, aliases[i].value);
         }
     } else {
-        for (int i = 1; args[i] != NULL; i++) {
-            char *arg = args[i];
-            char *name = strtok(arg, "=");
+        for (i = 1; args[i] != NULL; i++) {
+            arg = args[i];
+            name = _strtok(arg, "=");
+            
             if (strchr(arg, '=') != NULL) {
-                char *value = strtok(NULL, "=");
+                value = _strtok(NULL, "=");
                 set_alias(name, value);
             } else {
                 print_alias(name);
@@ -21,6 +27,7 @@ void handle_alias_command(char **args) {
 
 void set_alias(const char *name, const char *value) {
     int alias_index = find_alias(name);
+    
     if (alias_index != -1) {
         free(aliases[alias_index].value);
         aliases[alias_index].value = strdup(value);
@@ -37,6 +44,7 @@ void set_alias(const char *name, const char *value) {
 
 void print_alias(const char *name) {
     int alias_index = find_alias(name);
+    
     if (alias_index != -1) {
         printf("%s='%s'\n", aliases[alias_index].name, aliases[alias_index].value);
     } else {
@@ -45,7 +53,9 @@ void print_alias(const char *name) {
 }
 
 int find_alias(const char *name) {
-    for (int i = 0; i < num_aliases; i++) {
+    int i;
+    
+    for (i = 0; i < num_aliases; i++) {
         if (strcmp(aliases[i].name, name) == 0) {
             return i;
         }
