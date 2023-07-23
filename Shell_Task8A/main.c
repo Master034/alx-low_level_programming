@@ -8,6 +8,8 @@ int main(void) {
     char *path_env = getenv("PATH");
     char *path_token = _strtok(path_env, ":");
     char path_command[BUFFER_SIZE];
+    pid_t pid = 0;
+    int status;
 
     while (1)
     {
@@ -35,7 +37,14 @@ int main(void) {
             char *args[MAX_ARGS];
             
             tokenizeCommand(command, args);
-            if (fork() == 0)
+            pid = fork();
+            if (pid > 0)
+            {
+                perror("fork");
+                free(command);
+                exit(EXIT_FAILURE);
+            }
+            else if(pid == 0)
             {
                 execve(args[0], args, NULL);
                 while (path_token != NULL) {
@@ -44,11 +53,18 @@ int main(void) {
                     path_token = _strtok(NULL, ":");
                 }
                 perror("execve");
+                free(command);
                 exit(EXIT_FAILURE);
             }
             else
             {
-                wait(NULL);
+                wait(&status);
+                free(command);
+                 if (WIFEXITED(status))
+                    {
+                    int exit_status = WEXITSTATUS(status);
+                    printf("%d\n", exit_status);
+                    }
             }
         }
     }
