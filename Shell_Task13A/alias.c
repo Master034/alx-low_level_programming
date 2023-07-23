@@ -52,10 +52,10 @@ void set_alias(const char *name, const char *value) {
 }
 
 void print_alias(const char *name) {
-    int alias_index = find_alias(name);
+    AliasInfo *alias = find_alias(name);
     
-    if (alias_index != -1) {
-        printf("%s='%s'\n", aliases[alias_index].name, aliases[alias_index].value);
+    if (alias != NULL) {
+        printf("%s='%s'\n", alias->name, alias->value);
     } else {
         printf("Alias '%s' not found.\n", name);
     }
