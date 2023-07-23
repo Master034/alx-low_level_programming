@@ -21,5 +21,6 @@ char* _strtok(char* str, const char* delim);
 void _handle_exit(char *command);
 int _setenv(const char *name, const char *value, int overwrite);
 void _cd(const char *path);
+void execute_commands(const char *commands);
 
 #endif
