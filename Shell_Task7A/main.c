@@ -27,7 +27,7 @@ int main(void) {
         if (characters > 0 && command[characters - 1] == '\n')
             command[characters - 1] = '\0';
         if (strcmp(command, "exit") == 0)
-            break;
+            _exit(command);
         else if (strcmp(command, "env") == 0)
             print_environment();
         else if (command[0] != '\0')
