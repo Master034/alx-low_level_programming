@@ -6,13 +6,13 @@ int main(void) {
     size_t bufsize = 0;
     ssize_t characters;
     char *path_env = getenv("PATH");
-    char *path_token = _strtok(path_env, ":");
+    char *path_token = strtok(path_env, ":");
     char path_command[BUFFER_SIZE];
 
     while (1)
     {
         printf("simple_shell$ ");
-        characters = _getline(&command, &bufsize, stdin);
+        characters = getline(&command, &bufsize, stdin);
         
         if (characters == -1)
         {
@@ -41,7 +41,7 @@ int main(void) {
                 while (path_token != NULL) {
                     snprintf(path_command, BUFFER_SIZE, "%s/%s", path_token, args[0]);
                     execve(path_command, args, environ);
-                    path_token = _strtok(NULL, ":");
+                    path_token = strtok(NULL, ":");
                 }
                 perror("execve");
                 exit(EXIT_FAILURE);
