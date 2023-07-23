@@ -1,7 +1,7 @@
 #include "shell.h"
 
 void handle_alias_command(char **args) {
-    int i;
+    int i, num_aliases = 0;
     char *arg  = NULL;
     char *name = NULL;
     char *value = NULL;
