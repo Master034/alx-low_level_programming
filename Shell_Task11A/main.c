@@ -5,10 +5,7 @@ int main(void) {
     char *command = NULL;
     size_t bufsize = 0;
     ssize_t characters;
-    char *path_env = getenv("PATH");
 
-  
-    
     while (1)
     {
         printf("simple_shell$ ");
