@@ -8,6 +8,7 @@ int main(void) {
     char *path_env = getenv("PATH");
     char *path_token = _strtok(path_env, ":");
     char path_command[BUFFER_SIZE];
+    int overwrite = 0;
     
     while (1)
     {
@@ -38,7 +39,7 @@ int main(void) {
             if (strcmp(args[0], "exit") == 0)
                 _handle_exit(args[0]);
             if (strcmp(args[0], "setenv") == 0)
-                my_setenv(args[0]);
+                _setenv(args[1], args[2], overwrite);
             else if (fork() == 0)
             {
                 execve(args[0], args, NULL);
