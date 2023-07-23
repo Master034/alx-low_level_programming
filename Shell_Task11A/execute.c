@@ -1,3 +1,5 @@
+#include "shell.h"
+
 void execute_commands(const char *commands)
 {
     char *commands_copy = strdup(commands);
@@ -7,7 +9,7 @@ void execute_commands(const char *commands)
         return;
     }
 
-    char *token = strtok(commands_copy, ";");
+    char *token = _strtok(commands_copy, ";");
     while (token != NULL)
     {
         char *trimmed_command = token;
@@ -19,7 +21,6 @@ void execute_commands(const char *commands)
 
         if (trimmed_command[0] != '\0')
         {
-            // Tokenize and execute the trimmed_command here.
             char *args[MAX_ARGS];
             tokenizeCommand(trimmed_command, args);
 
@@ -33,7 +34,6 @@ void execute_commands(const char *commands)
                 cd(args[1]);
             else
             {
-                // Fork and execute external commands
                 if (fork() == 0)
                 {
                     execvp(args[0], args);
@@ -46,7 +46,7 @@ void execute_commands(const char *commands)
                 }
             }
         }
-        token = strtok(NULL, ";");
+        token = _strtok(NULL, ";");
     }
 
     free(commands_copy);
