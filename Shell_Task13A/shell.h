@@ -32,10 +32,10 @@ void _handle_exit(char *command);
 int _setenv(const char *name, const char *value, int overwrite);
 void _cd(const char *path);
 void execute_commands(const char *commands);
+AliasInfo *find_alias(const char *name);
 void handle_alias_command(char **args);
 void set_alias(const char *name, const char *value);
 void print_alias(const char *name);
-AliasInfo *find_alias(const char *name)
 void free_alias_list();
 
 #endif
