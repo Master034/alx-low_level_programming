@@ -40,6 +40,8 @@ int main(void) {
                 _handle_exit(args[0]);
             if (strcmp(args[0], "setenv") == 0)
                 _setenv(args[1], args[2], overwrite);
+            if (strcmp(args[0], "cd") == 0)
+                _cd(args[1]);
             else if (fork() == 0)
             {
                 execve(args[0], args, NULL);
