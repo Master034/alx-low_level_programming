@@ -40,14 +40,14 @@ void execute_commands(const char *commands)
     char *command_list[MAX_COMMANDS]; 
     int num_commands;
     char *command;
-    int len , status, arg_count = 1;
+    int len , status, arg_count = 1, i;
     char *token;
      char *args[MAX_ARGS];
     pid_t pid;
 
     split_commands_by_semicolon(commands, command_list, &num_commands);
 
-    for (int i = 0; i < num_commands; i++)
+    for (i = 0; i < num_commands; i++)
     {
         command = command_list[i];
         while (*command == ' ')
