@@ -20,7 +20,6 @@ typedef struct AliasInfo {
     struct AliasInfo *next;
 } AliasInfo;
 
-AliasInfo *aliases = NULL;
 
 extern char **environ;
 
