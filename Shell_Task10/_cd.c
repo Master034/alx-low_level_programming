@@ -35,7 +35,7 @@ int handle_cd_command(char **args)
             return -1;
         }
     }
-    if (strcmp(args[1], "-") == 0)
+    else if (strcmp(args[1], "-") == 0)
     {
         char *old_pwd = getenv("OLDPWD");
         if (old_pwd)
@@ -55,28 +55,43 @@ int handle_cd_command(char **args)
             return -1;
         }
     }
-    if (getcwd(prev_cwd, BUFFER_SIZE) == NULL)
-    {
-        perror("getcwd");
-        return -1;
-    }
-
-    if (chdir(args[1]) != 0)
-    {
-        perror("cd");
-        return -1;
-    }
-    if (getcwd(cwd, BUFFER_SIZE) != NULL)
-    {
-        update_PWD_env(cwd);
-        strncpy(current_dir, cwd, BUFFER_SIZE - 1);
-        current_dir[BUFFER_SIZE - 1] = '\0';
-    }
     else
     {
-        perror("cd");
-        return -1;
+         struct stat dir_stat;
+        if (stat(args[1], &dir_stat) != 0)
+        {
+            perror("cd");
+            return -1;
+        }
+
+        if (!S_ISDIR(dir_stat.st_mode))
+        {
+            fprintf(stderr, "cd: %s: Not a directory\n", args[1]);
+            return -1;
+        }
+        if (getcwd(prev_cwd, BUFFER_SIZE) == NULL)
+        {
+            perror("getcwd");
+            return -1;
+        }
+    
+        if (chdir(args[1]) != 0)
+        {
+            perror("cd");
+            return -1;
+        }
+        if (getcwd(cwd, BUFFER_SIZE) != NULL)
+        {
+            update_PWD_env(cwd);
+            strncpy(current_dir, cwd, BUFFER_SIZE - 1);
+            current_dir[BUFFER_SIZE - 1] = '\0';
+        }
+        else
+        {
+            perror("cd");
+            return -1;
+        }
+        printf("%s\n", current_dir);
+        return 0;
     }
-    printf("%s\n", current_dir);
-    return 0;
 }
