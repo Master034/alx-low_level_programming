@@ -61,6 +61,7 @@ int main(void) {
             }
         }
     }
+    free_alias_list();
     free(command);
     return 0;
 }
