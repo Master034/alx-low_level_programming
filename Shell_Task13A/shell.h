@@ -20,7 +20,7 @@ typedef struct AliasInfo {
     struct AliasInfo *next;
 } AliasInfo;
 
-AliasInfo aliases[MAX_ALIASES];
+AliasInfo *aliases = NULL;
 
 extern char **environ;
 
