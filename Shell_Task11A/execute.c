@@ -3,11 +3,10 @@
 void execute_commands(const char *commands)
 {
     char *commands_copy = strdup(commands);
-    char *args[MAX_ARGS];
     char *trimmed_command;
     char *semicolon_token;
     char *token = NULL;
-     int arg_count = 1, status;
+     int arg_count = 1, status, len;
     char *command;
     pid_t pid;
 
