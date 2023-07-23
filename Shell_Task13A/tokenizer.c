@@ -2,6 +2,11 @@
 
 void tokenizeCommand(char *command, char **args)
 {
+    char *comment_ptr = strchr(command, '#');
+    
+     if (comment_ptr != NULL) {
+        *comment_ptr = '\0';
+    }
     int arg_count = 0;
     char *token = strtok(command, " ");
     
