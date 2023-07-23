@@ -32,19 +32,22 @@ void handle_alias_command(char **args) {
 }
 
 void set_alias(const char *name, const char *value) {
-    int alias_index = find_alias(name);
+       AliasInfo *alias = find_alias(name);
     
-    if (alias_index != -1) {
-        free(aliases[alias_index].value);
-        aliases[alias_index].value = strdup(value);
+    if (alias != NULL) {
+        free(alias->value);
+        alias->value = strdup(value);
     } else {
-        if (num_aliases < MAX_ALIASES) {
-            aliases[num_aliases].name = strdup(name);
-            aliases[num_aliases].value = strdup(value);
-            num_aliases++;
-        } else {
-            printf("Too many aliases. Cannot create alias '%s'.\n", name);
+        alias = (AliasInfo *)malloc(sizeof(AliasInfo));
+        if (alias == NULL) {
+            perror("set_alias: malloc");
+            return;
         }
+        alias->name = strdup(name);
+        alias->value = strdup(value);
+        alias->next = NULL;
+        alias->next = aliases;
+        aliases = alias;
     }
 }
 
@@ -59,12 +62,25 @@ void print_alias(const char *name) {
 }
 
 int find_alias(const char *name) {
-    int i;
+    AliasInfo *current = aliases;
     
-    for (i = 0; i < num_aliases; i++) {
-        if (strcmp(aliases[i].name, name) == 0) {
-            return i;
+    while (current != NULL) {
+        if (strcmp(current->name, name) == 0) {
+            return current;
         }
+        current = current->next;
     }
-    return -1;
+    return (NULL);
+}
+
+void free_alias_list() {
+    AliasInfo *current = aliases;
+    while (current != NULL) {
+        AliasInfo *next = current->next;
+        free(current->name);
+        free(current->value);
+        free(current);
+        current = next;
+    }
+    aliases = NULL;
 }
