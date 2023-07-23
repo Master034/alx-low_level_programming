@@ -5,7 +5,6 @@ int main(void) {
     char *command = NULL;
     size_t bufsize = 0;
     ssize_t characters;
-    int c;
 
     while (1)
     {
