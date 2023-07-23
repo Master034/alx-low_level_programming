@@ -55,6 +55,7 @@ int main(void) {
     char prompt[BUFFER_SIZE];
     char prompt_format[BUFFER_SIZE] = "simple_shell (%s)$ ";
     char current_dir[BUFFER_SIZE] = "";
+    int i;
 
     while (1)
     {
@@ -107,7 +108,7 @@ int main(void) {
                     wait(NULL);
                 }
             }
-             for (int i = 0; args[i] != NULL; i++) {
+             for (i = 0; args[i] != NULL; i++) {
                 free(args[i]);
             }
         }
