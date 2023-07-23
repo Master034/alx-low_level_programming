@@ -3,6 +3,10 @@
 void execute_commands(const char *commands)
 {
     char *commands_copy = strdup(commands);
+    char *args[MAX_ARGS];
+    char *trimmed_command;
+     int len;
+    
     if (commands_copy == NULL)
     {
         perror("execute_commands: strdup");
@@ -12,16 +16,15 @@ void execute_commands(const char *commands)
     char *token = _strtok(commands_copy, ";");
     while (token != NULL)
     {
-        char *trimmed_command = token;
+        trimmed_command = token;
         while (*trimmed_command == ' ')
             trimmed_command++;
-        int len = strlen(trimmed_command);
+        len = strlen(trimmed_command);
         while (len > 0 && trimmed_command[len - 1] == ' ')
             trimmed_command[--len] = '\0';
 
         if (trimmed_command[0] != '\0')
         {
-            char *args[MAX_ARGS];
             tokenizeCommand(trimmed_command, args);
 
             if (strcmp(args[0], "exit") == 0)
@@ -31,13 +34,13 @@ void execute_commands(const char *commands)
             else if (strcmp(args[0], "unsetenv") == 0)
                 unsetenv(args[1]);
             else if (strcmp(args[0], "cd") == 0)
-                cd(args[1]);
+                _cd(args[1]);
             else
             {
                 if (fork() == 0)
                 {
-                    execvp(args[0], args);
-                    perror("execvp");
+                    execve(args[0], args);
+                    perror("execve");
                     exit(EXIT_FAILURE);
                 }
                 else
