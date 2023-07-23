@@ -2,6 +2,8 @@
 
 void free_command_list(char **command_list, int num_commands);
 void split_commands_by_semicolon(const char *commands, char **command_list, int *num_commands);
+void execute_single_command(char *command);
+void handle_logical_op(char **command_list, int *index, int should_execute);
 
 void split_commands_by_semicolon(const char *commands, char **command_list, int *num_commands)
 {
