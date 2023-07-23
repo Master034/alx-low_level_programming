@@ -5,6 +5,7 @@ int main(void) {
     char *command = NULL;
     size_t bufsize = 0;
     ssize_t characters;
+    int c;
 
     while (1)
     {
@@ -31,6 +32,9 @@ int main(void) {
         {
             execute_commands(command);
         }
+         
+        while ((c = getchar()) != '\n' && c != EOF)
+            ;
     }
     free(command);
     return 0;
