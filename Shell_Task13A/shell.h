@@ -12,6 +12,15 @@
 #define MAX_ARGS 10
 #define INITIAL_BUFFER_SIZE 64
 #define MAX_COMMANDS 10
+#define MAX_ALIASES 50
+
+typedef struct AliasInfo {
+    char *name;
+    char *value;
+} AliasInfo;
+
+AliasInfo aliases[MAX_ALIASES];
+int num_aliases = 0;
 
 extern char **environ;
 
