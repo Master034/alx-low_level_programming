@@ -9,12 +9,12 @@
  */
 int _setenv(const char *name, const char *value, int overwrite)
 {
-    if (name == NULL || name[0] == '\0' || strchr(name, '=') != NULL)
-    {
-        fprintf(stderr, "Invalid environment variable name.\n");
-        return -1;
-    }
     char *env_var = getenv(name);
+    
+    if (name == NULL || name[0] == '\0' || strchr(name, '=') != NULL)
+        return -1;
+    if (env_var != NULL)
+        overwrite = 1;
     if (env_var != NULL && !overwrite)
     {
         printf("Environment variable '%s' already exists. Use 'overwrite' flag to modify.\n", name);
@@ -36,6 +36,5 @@ int _setenv(const char *name, const char *value, int overwrite)
         free(new_env_var);
         return -1;
     }
-
     return 0;
 }
