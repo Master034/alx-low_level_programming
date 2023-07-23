@@ -8,6 +8,7 @@ int main(void) {
     char *path_token = _strtok(path_env, ":");
     char path_command[BUFFER_SIZE];
     int overwrite = 0;
+    char *path_env = getenv("PATH");
 
     while (1)
     {
