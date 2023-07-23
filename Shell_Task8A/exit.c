@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void _exit(char *command)
+void _handle_exit(char *command)
 {
     char *arg = _strtok(NULL, " ");
     if (arg != NULL)
