@@ -1,0 +1,54 @@
+#include "shell.h"
+
+void handle_alias_command(char **args) {
+    if (args[1] == NULL) {
+        for (int i = 0; i < num_aliases; i++) {
+            printf("%s='%s'\n", aliases[i].name, aliases[i].value);
+        }
+    } else {
+        for (int i = 1; args[i] != NULL; i++) {
+            char *arg = args[i];
+            char *name = strtok(arg, "=");
+            if (strchr(arg, '=') != NULL) {
+                char *value = strtok(NULL, "=");
+                set_alias(name, value);
+            } else {
+                print_alias(name);
+            }
+        }
+    }
+}
+
+void set_alias(const char *name, const char *value) {
+    int alias_index = find_alias(name);
+    if (alias_index != -1) {
+        free(aliases[alias_index].value);
+        aliases[alias_index].value = strdup(value);
+    } else {
+        if (num_aliases < MAX_ALIASES) {
+            aliases[num_aliases].name = strdup(name);
+            aliases[num_aliases].value = strdup(value);
+            num_aliases++;
+        } else {
+            printf("Too many aliases. Cannot create alias '%s'.\n", name);
+        }
+    }
+}
+
+void print_alias(const char *name) {
+    int alias_index = find_alias(name);
+    if (alias_index != -1) {
+        printf("%s='%s'\n", aliases[alias_index].name, aliases[alias_index].value);
+    } else {
+        printf("Alias '%s' not found.\n", name);
+    }
+}
+
+int find_alias(const char *name) {
+    for (int i = 0; i < num_aliases; i++) {
+        if (strcmp(aliases[i].name, name) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
