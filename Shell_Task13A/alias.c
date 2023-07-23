@@ -61,7 +61,7 @@ void print_alias(const char *name) {
     }
 }
 
-int find_alias(const char *name) {
+AliasInfo *find_alias(const char *name) {
     AliasInfo *current = aliases;
     
     while (current != NULL) {
@@ -70,7 +70,7 @@ int find_alias(const char *name) {
         }
         current = current->next;
     }
-    return (NULL);
+    return NULL;
 }
 
 void free_alias_list() {
