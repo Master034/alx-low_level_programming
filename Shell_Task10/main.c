@@ -89,20 +89,26 @@ int main(void) {
                 handle_unsetenv_command(args);
             else if (strcmp(args[0], "cd") == 0)
                 handle_cd_command(args);
-            if (fork() == 0)
+            else 
             {
-                execve(args[0], args, NULL);
-                while (path_token != NULL) {
-                    snprintf(path_command, BUFFER_SIZE, "%s/%s", path_token, args[0]);
-                    execve(path_command, args, environ);
-                    path_token = _strtok(NULL, ":");
+                if (fork() == 0)
+                {
+                    execve(args[0], args, NULL);
+                    while (path_token != NULL) {
+                        snprintf(path_command, BUFFER_SIZE, "%s/%s", path_token, args[0]);
+                        execve(path_command, args, environ);
+                        path_token = _strtok(NULL, ":");
+                    }
+                    perror("execve");
+                    exit(EXIT_FAILURE);
                 }
-                perror("execve");
-                exit(EXIT_FAILURE);
+                else
+                {
+                    wait(NULL);
+                }
             }
-            else
-            {
-                wait(NULL);
+             for (int i = 0; args[i] != NULL; i++) {
+                free(args[i]);
             }
         }
     }
