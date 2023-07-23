@@ -1,19 +1,17 @@
 #include "shell.h"
 
-
-void _exit(char *command) {
-    // Check if there are arguments after "exit"
-    char *arg = strtok(NULL, " ");
+void _exit(char *command)
+{
+    char *arg = _strtok(NULL, " ");
     if (arg != NULL)
     {
-        // Convert the status argument to an integer
         int status = atoi(arg);
         free(command);
-        exit(status); // Terminate the shell with the specified status
+        exit(status); 
     }
     else
     {
         free(command);
-        exit(EXIT_SUCCESS); // Terminate the shell without a status argument
+        exit(EXIT_SUCCESS); 
     }
 }
