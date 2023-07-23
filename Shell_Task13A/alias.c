@@ -1,5 +1,6 @@
 #include "shell.h"
 int num_aliases = 0;
+AliasInfo *aliases = NULL;
 
 void handle_alias_command(char **args) {
     int i;
