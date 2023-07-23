@@ -20,7 +20,12 @@ void handle_alias_command(char **args) {
                 value = _strtok(NULL, "=");
                 set_alias(name, value);
             } else {
-                print_alias(name);
+                int alias_index = find_alias(name);
+                if (alias_index != -1) {
+                    printf("%s='%s'\n", aliases[alias_index].name, aliases[alias_index].value);
+                } else {
+                    printf("Alias '%s' not found.\n", name);
+                }
             }
         }
     }
