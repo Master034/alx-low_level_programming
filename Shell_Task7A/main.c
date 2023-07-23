@@ -30,7 +30,7 @@ int main(void) {
             break;
         else if (strcmp(command, "env") == 0)
             print_environment();
-        if (command[0] != '\0')
+        else if (command[0] != '\0')
         {
             char *args[MAX_ARGS];
             
