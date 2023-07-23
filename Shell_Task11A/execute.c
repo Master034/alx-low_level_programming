@@ -6,6 +6,7 @@ void execute_commands(const char *commands)
     char *args[MAX_ARGS];
     char *trimmed_command;
      int len;
+    char *token = NULL;
     
     if (commands_copy == NULL)
     {
@@ -13,7 +14,7 @@ void execute_commands(const char *commands)
         return;
     }
 
-    char *token = _strtok(commands_copy, ";");
+    token = _strtok(commands_copy, ";");
     while (token != NULL)
     {
         trimmed_command = token;
@@ -39,7 +40,7 @@ void execute_commands(const char *commands)
             {
                 if (fork() == 0)
                 {
-                    execve(args[0], args);
+                    execve(args[0], args, environ);
                     perror("execve");
                     exit(EXIT_FAILURE);
                 }
