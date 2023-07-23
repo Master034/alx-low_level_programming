@@ -37,14 +37,7 @@ int main(void) {
             char *args[MAX_ARGS];
             
             tokenizeCommand(command, args);
-            pid = fork();
-            if (pid > 0)
-            {
-                perror("fork");
-                free(command);
-                exit(EXIT_FAILURE);
-            }
-            else if(pid == 0)
+            if (fork() == 0)
             {
                 execve(args[0], args, NULL);
                 while (path_token != NULL) {
@@ -53,18 +46,11 @@ int main(void) {
                     path_token = _strtok(NULL, ":");
                 }
                 perror("execve");
-                free(command);
                 exit(EXIT_FAILURE);
             }
             else
             {
-                wait(&status);
-                free(command);
-                 if (WIFEXITED(status))
-                    {
-                    int exit_status = WEXITSTATUS(status);
-                    printf("%d\n", exit_status);
-                    }
+                wait(NULL);
             }
         }
     }
