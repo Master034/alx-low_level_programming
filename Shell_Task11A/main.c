@@ -33,8 +33,7 @@ int main(void) {
             execute_commands(command);
         }
          
-        while ((c = getchar()) != '\n' && c != EOF)
-            ;
+         fflush(stdin);
     }
     free(command);
     return 0;
