@@ -29,7 +29,9 @@ void split_commands_by_semicolon(const char *commands, char **command_list, int 
 
 void free_command_list(char **command_list, int num_commands)
 {
-    for (int i = 0; i < num_commands; i++)
+    int i;
+    
+    for (i = 0; i < num_commands; i++)
     {
         free(command_list[i]);
     }
