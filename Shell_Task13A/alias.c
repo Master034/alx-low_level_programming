@@ -3,10 +3,10 @@ int num_aliases = 0;
 
 void handle_alias_command(char **args) {
     int i;
-    char *arg  = NULL;
+    char *arg = NULL;
     char *name = NULL;
     char *value = NULL;
-    
+
     if (args[1] == NULL) {
         for (i = 0; i < num_aliases; i++) {
             printf("%s='%s'\n", aliases[i].name, aliases[i].value);
@@ -15,14 +15,14 @@ void handle_alias_command(char **args) {
         for (i = 1; args[i] != NULL; i++) {
             arg = args[i];
             name = _strtok(arg, "=");
-            
+
             if (strchr(arg, '=') != NULL) {
                 value = _strtok(NULL, "=");
                 set_alias(name, value);
             } else {
-                int alias_index = find_alias(name);
-                if (alias_index != -1) {
-                    printf("%s='%s'\n", aliases[alias_index].name, aliases[alias_index].value);
+                AliasInfo *alias = find_alias(name);
+                if (alias != NULL) {
+                    printf("%s='%s'\n", alias->name, alias->value);
                 } else {
                     printf("Alias '%s' not found.\n", name);
                 }
