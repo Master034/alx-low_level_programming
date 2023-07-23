@@ -1,5 +1,7 @@
 #include "shell.h"
 
+
+
 void execute_commands(const char *commands)
 {
     char *commands_copy = strdup(commands);
@@ -16,7 +18,7 @@ void execute_commands(const char *commands)
         return;
     }
 
-    semicolon_token = strtok(commands_copy, ";");
+    semicolon_token = _strtok(commands_copy, ";");
     while (semicolon_token != NULL)
     {
         trimmed_command = semicolon_token;
