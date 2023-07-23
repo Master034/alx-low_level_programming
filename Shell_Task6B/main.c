@@ -12,7 +12,7 @@ int main(void) {
     while (1)
     {
         printf("simple_shell$ ");
-        characters = getline(&command, &bufsize, stdin);
+        characters = _getline(&command, &bufsize, stdin);
         
         if (characters == -1)
         {
