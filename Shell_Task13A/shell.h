@@ -17,6 +17,7 @@
 typedef struct AliasInfo {
     char *name;
     char *value;
+    struct AliasInfo *next;
 } AliasInfo;
 
 AliasInfo aliases[MAX_ALIASES];
