@@ -6,6 +6,9 @@
  */
 void cd(const char *path)
 {
+    char current_path[BUFFER_SIZE];
+    char new_path[BUFFER_SIZE];
+    
     if (path == NULL || path[0] == '\0')
     {
         path = getenv("HOME");
@@ -16,7 +19,6 @@ void cd(const char *path)
         }
     }
 
-    char current_path[BUFFER_SIZE];
     if (getcwd(current_path, BUFFER_SIZE) == NULL)
     {
         perror("cd");
@@ -37,7 +39,6 @@ void cd(const char *path)
         perror("cd");
         return;
     }
-    char new_path[BUFFER_SIZE];
     if (getcwd(new_path, BUFFER_SIZE) == NULL)
     {
         perror("cd");
