@@ -40,3 +40,38 @@ int _setenv(const char *name, const char *value, int overwrite)
     }
     return 0;
 }
+
+/**
+ * _unsetenv - Unset an environment variable.
+ * @name: Name of the environment variable to unset.
+ * Return: On success, 0. On error, -1 is returned.
+ */
+int _unsetenv(const char *name)
+{
+    char **env = environ;
+    char *env_var;
+    size_t len_name;
+
+    if (name == NULL || name[0] == '\0' || strchr(name, '=') != NULL)
+        return -1;
+
+    len_name = strlen(name);
+    
+    while (*env != NULL)
+    {
+        env_var = *env;
+        if (strncmp(env_var, name, len_name) == 0 && env_var[len_name] == '=')
+        {
+            while (*(env + 1) != NULL)
+            {
+                *env = *(env + 1);
+                env++;
+            }
+            *env = NULL;
+            return 0;
+        }
+        env++;
+    }
+    fprintf(stderr, "unsetenv: Environment variable '%s' not found.\n", name);
+    return -1;
+}
