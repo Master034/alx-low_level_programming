@@ -68,9 +68,11 @@ int _strncmp(const char *s1, const char *s2, size_t n)
  */
 const char* _strpbrk(const char* str, const char* charSet) 
 {
+	const char* c;
+	
 	for (; *str != '\0'; str++)
 	{
-		for (const char* c = charSet; *c != '\0'; c++)
+		for (c = charSet; *c != '\0'; c++)
 		{
 			if (*str == *c)
 			{
