@@ -38,4 +38,6 @@ void set_alias(const char *name, const char *value);
 void print_alias(const char *name);
 void free_alias_list();
 
+int _strlen(const char *s);
+
 #endif
