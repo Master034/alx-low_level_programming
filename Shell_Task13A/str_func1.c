@@ -59,3 +59,24 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 	else
 		return (-15);
 }
+
+/**
+ * _strpbrk - Checks for occurennce in a string.
+ * @str: Pointer to string.
+ * @charSet: Pointer to what to search
+ * Return: The string.
+ */
+const char* _strpbrk(const char* str, const char* charSet) 
+{
+	for (; *str != '\0'; str++)
+	{
+		for (const char* c = charSet; *c != '\0'; c++)
+		{
+			if (*str == *c)
+			{
+				return (str);
+			}
+		}
+	}
+	return NULL;
+}
