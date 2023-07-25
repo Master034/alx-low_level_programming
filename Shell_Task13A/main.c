@@ -27,22 +27,22 @@ int main(void) {
         }
         if (characters > 0 && command[characters - 1] == '\n')
             command[characters - 1] = '\0';
-        if (strcmp(command, "exit") == 0)
+        if (_strcmp(command, "exit") == 0)
             _handle_exit(command);
-        else if (strcmp(command, "env") == 0)
+        else if (_strcmp(command, "env") == 0)
             print_environment();
         else if (command[0] != '\0')
         {
             char *args[MAX_ARGS];
             
             tokenizeCommand(command, args);
-            if (strcmp(args[0], "exit") == 0)
+            if (_strcmp(args[0], "exit") == 0)
                 _handle_exit(args[0]);
-            else if (strcmp(args[0], "alias") == 0)
+            else if (_strcmp(args[0], "alias") == 0)
                 handle_alias_command(args);
-            else if (strcmp(args[0], "setenv") == 0)
+            else if (_strcmp(args[0], "setenv") == 0)
                 _setenv(args[1], args[2], overwrite);
-            else if (strcmp(args[0], "cd") == 0)
+            else if (_strcmp(args[0], "cd") == 0)
                 _cd(args[1]);
             else if (fork() == 0)
             {
