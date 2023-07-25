@@ -2,29 +2,43 @@
 int num_aliases = 0;
 AliasInfo *aliases = NULL;
 
-void handle_alias_command(char **args) {
+/**
+ * handle_alias_command - handle.
+ * @args: Arguments
+ * Return: void
+ */
+void handle_alias_command(char **args)
+{
     int i;
     char *arg = NULL;
     char *name = NULL;
     char *value = NULL;
-
-    if (args[1] == NULL) {
-        for (i = 0; i < num_aliases; i++) {
+    
+    if (args[1] == NULL)
+    {
+        for (i = 0; i < num_aliases; i++)
             printf("%s='%s'\n", aliases[i].name, aliases[i].value);
-        }
-    } else {
-        for (i = 1; args[i] != NULL; i++) {
+    }
+    else
+    {
+        for (i = 1; args[i] != NULL; i++)
+        {
             arg = args[i];
             name = _strtok(arg, "=");
-
-            if (_strchr(arg, '=') != NULL) {
+            if (_strchr(arg, '=') != NULL)
+            {
                 value = _strtok(NULL, "=");
                 set_alias(name, value);
-            } else {
+            }
+            else
+            {
                 AliasInfo *alias = find_alias(name);
-                if (alias != NULL) {
+                if (alias != NULL)
+                {
                     printf("%s='%s'\n", alias->name, alias->value);
-                } else {
+                }
+                else
+                {
                     printf("Alias '%s' not found.\n", name);
                 }
             }
@@ -32,15 +46,26 @@ void handle_alias_command(char **args) {
     }
 }
 
-void set_alias(const char *name, const char *value) {
-       AliasInfo *alias = find_alias(name);
+/**
+ * set_alias - set alias.
+ * @name: Arguments
+ * @value: value
+ * Return: void
+ */
+void set_alias(const char *name, const char *value)
+{
+    AliasInfo *alias = find_alias(name);
     
-    if (alias != NULL) {
+    if (alias != NULL)
+    {
         free(alias->value);
         alias->value = strdup(value);
-    } else {
+    }
+    else
+    {
         alias = (AliasInfo *)malloc(sizeof(AliasInfo));
-        if (alias == NULL) {
+        if (alias == NULL)
+        {
             perror("set_alias: malloc");
             return;
         }
@@ -52,21 +77,38 @@ void set_alias(const char *name, const char *value) {
     }
 }
 
-void print_alias(const char *name) {
+/**
+ * print_alias - print alias.
+ * @name: Arguments
+ * Return: void
+ */
+void print_alias(const char *name)
+{
     AliasInfo *alias = find_alias(name);
     
-    if (alias != NULL) {
+    if (alias != NULL)
+    {
         printf("%s='%s'\n", alias->name, alias->value);
-    } else {
+    }
+    else
+    {
         printf("Alias '%s' not found.\n", name);
     }
 }
 
-AliasInfo *find_alias(const char *name) {
+/**
+ * find_alias - find alias.
+ * @name: Arguments
+ * Return: AliasInfo
+ */
+AliasInfo *find_alias(const char *name)
+{
     AliasInfo *current = aliases;
     
-    while (current != NULL) {
-        if (_strcmp(current->name, name) == 0) {
+    while (current != NULL)
+    {
+        if (_strcmp(current->name, name) == 0)
+        {
             return current;
         }
         current = current->next;
@@ -74,9 +116,15 @@ AliasInfo *find_alias(const char *name) {
     return NULL;
 }
 
-void free_alias_list() {
+/**
+ * free_alias_list - free_alias_list .
+ * Return: AliasInfo
+ */
+void free_alias_list()
+{
     AliasInfo *current = aliases;
-    while (current != NULL) {
+    while (current != NULL)
+    {
         AliasInfo *next = current->next;
         free(current->name);
         free(current->value);
