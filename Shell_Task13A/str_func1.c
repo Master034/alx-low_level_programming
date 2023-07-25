@@ -91,7 +91,7 @@ const char* _strpbrk(const char* str, const char* charSet)
  * Return: If c is found - a pointer to the first occurence.
  *         If c is not found - NULL.
  */
-char *_strchr(char *s, char c)
+char *_strchr(const char *s, const char c);
 {
 	int index;
 
