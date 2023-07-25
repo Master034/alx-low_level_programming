@@ -13,7 +13,7 @@ int _setenv(const char *name, const char *value, int overwrite)
     size_t len_name, len_value,len_total;
     char *new_env_var = NULL;
     
-    if (name == NULL || name[0] == '\0' || strchr(name, '=') != NULL)
+    if (name == NULL || name[0] == '\0' || _strchr(name, '=') != NULL)
         return -1;
     if (env_var != NULL)
         overwrite = 1;
@@ -22,8 +22,8 @@ int _setenv(const char *name, const char *value, int overwrite)
         printf("Environment variable '%s' already exists. Use 'overwrite' flag to modify.\n", name);
         return 0;
     }
-    len_name = strlen(name);
-    len_value = strlen(value);
+    len_name = _strlen(name);
+    len_value = _strlen(value);
     len_total = len_name + 1 + len_value + 1;
     new_env_var = (char *)malloc(len_total);
     if (new_env_var == NULL)
@@ -52,15 +52,15 @@ int _unsetenv(const char *name)
     char *env_var;
     size_t len_name;
 
-    if (name == NULL || name[0] == '\0' || strchr(name, '=') != NULL)
+    if (name == NULL || name[0] == '\0' || _strchr(name, '=') != NULL)
         return -1;
 
-    len_name = strlen(name);
+    len_name = _strlen(name);
     
     while (*env != NULL)
     {
         env_var = *env;
-        if (strncmp(env_var, name, len_name) == 0 && env_var[len_name] == '=')
+        if (_strncmp(env_var, name, len_name) == 0 && env_var[len_name] == '=')
         {
             while (*(env + 1) != NULL)
             {
