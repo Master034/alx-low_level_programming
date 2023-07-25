@@ -29,7 +29,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 char* _strtok(char* str, const char* delim);
 void _handle_exit(char *command);
 int _setenv(const char *name, const char *value, int overwrite);
-int _unsetenv(const char *name)
+int _unsetenv(const char *name);
 void _cd(const char *path);
 void execute_commands(const char *commands);
 AliasInfo *find_alias(const char *name);
