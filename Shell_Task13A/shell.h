@@ -39,5 +39,7 @@ void print_alias(const char *name);
 void free_alias_list();
 
 int _strlen(const char *s);
+int _strcmp(char *s1, char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
