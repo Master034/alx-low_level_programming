@@ -42,6 +42,6 @@ int _strlen(const char *s);
 int _strcmp(const char *s1, const char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 const char* _strpbrk(const char* str, const char* charSet);
-char *_strchr(const char *s, const char c);
+const char *_strchr(const char *s, const char c);
 
 #endif
