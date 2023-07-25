@@ -18,7 +18,7 @@ char* _strtok(char* str, const char* delim)
     if (crnt_str == NULL || end_of_string)
         return (NULL);
     token_start = crnt_str;
-    token_end = _strpbrk(crnt_str, delim);
+    token_end = (char*)_strpbrk(crnt_str, delim);
     
     if (token_end == NULL)
         end_of_string = true;
