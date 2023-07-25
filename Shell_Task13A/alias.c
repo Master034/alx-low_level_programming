@@ -17,7 +17,7 @@ void handle_alias_command(char **args) {
             arg = args[i];
             name = _strtok(arg, "=");
 
-            if (strchr(arg, '=') != NULL) {
+            if (_strchr(arg, '=') != NULL) {
                 value = _strtok(NULL, "=");
                 set_alias(name, value);
             } else {
