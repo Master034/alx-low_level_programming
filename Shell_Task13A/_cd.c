@@ -24,7 +24,7 @@ void _cd(const char *path)
         perror("cd");
         return;
     }
-    if (strcmp(path, "-") == 0)
+    if (_strcmp(path, "-") == 0)
     {
         path = getenv("OLDPWD");
         if (path == NULL)
