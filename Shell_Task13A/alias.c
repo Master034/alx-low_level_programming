@@ -66,7 +66,7 @@ AliasInfo *find_alias(const char *name) {
     AliasInfo *current = aliases;
     
     while (current != NULL) {
-        if (strcmp(current->name, name) == 0) {
+        if (_strcmp(current->name, name) == 0) {
             return current;
         }
         current = current->next;
