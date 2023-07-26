@@ -58,12 +58,10 @@ int main(void)
                 exit(EXIT_FAILURE);
             }
             else
-            {
                 wait(NULL);
-            }
         }
     }
     free_alias_list();
     free(command);
-    return 0;
+    return (0);
 }
