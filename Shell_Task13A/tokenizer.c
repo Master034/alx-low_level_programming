@@ -4,7 +4,7 @@
  * tokenizeCommand - Tokenize the commands.
  * @command: Command Passed
  * @args: Arguments Passed
- * Return: void
+ * Return: void.
  */
 void tokenizeCommand(char *command, char **args)
 {
