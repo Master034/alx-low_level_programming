@@ -43,5 +43,6 @@ int _strcmp(const char *s1, const char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 const char* _strpbrk(const char* str, const char* charSet);
 const char *_strchr(const char *s, const char c);
+char* _getenv(const char* name);
 
 #endif
