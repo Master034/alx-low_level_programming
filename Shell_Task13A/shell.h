@@ -50,5 +50,6 @@ const char* _strpbrk(const char* str, const char* charSet);
 const char *_strchr(const char *s, const char c);
 char *_strdup(const char *str);
 char* _getenv(const char* name);
+void execute_command(char **args, char **path_token, char *path_command);
 
 #endif
