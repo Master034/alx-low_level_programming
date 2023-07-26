@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * tokenizeCommand - Tokenize the commands.
+ * @command: Command Passed
+ * @args: Arguments Passed
+ * Return: void
+ */
 void tokenizeCommand(char *command, char **args)
 {
     int arg_count = 0;
