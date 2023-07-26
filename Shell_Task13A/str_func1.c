@@ -66,10 +66,10 @@ int _strncmp(const char *s1, const char *s2, size_t n)
  * @charSet: Pointer to what to search
  * Return: The string.
  */
-const char* _strpbrk(const char* str, const char* charSet) 
+const char *_strpbrk(const char *str, const char *charSet)
 {
-	const char* c;
-	
+	const char *c;
+
 	for (; *str != '\0'; str++)
 	{
 		for (c = charSet; *c != '\0'; c++)
@@ -80,7 +80,7 @@ const char* _strpbrk(const char* str, const char* charSet)
 			}
 		}
 	}
-	return NULL;
+	return (NULL);
 }
 
 /**
