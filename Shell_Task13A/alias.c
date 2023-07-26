@@ -59,7 +59,7 @@ void set_alias(const char *name, const char *value)
     if (alias != NULL)
     {
         free(alias->value);
-        alias->value = strdup(value);
+        alias->value = _strdup(value);
     }
     else
     {
@@ -69,8 +69,8 @@ void set_alias(const char *name, const char *value)
             perror("set_alias: malloc");
             return;
         }
-        alias->name = strdup(name);
-        alias->value = strdup(value);
+        alias->name = _strdup(name);
+        alias->value = _strdup(value);
         alias->next = NULL;
         alias->next = aliases;
         aliases = alias;
