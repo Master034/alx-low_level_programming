@@ -27,5 +27,5 @@ char* _strtok(char* str, const char* delim)
         *token_end = '\0';
         crnt_str = token_end + 1;
     }
-    return token_start;
+    return (token_start);
 }
