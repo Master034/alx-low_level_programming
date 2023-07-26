@@ -76,22 +76,3 @@ int _unsetenv(const char *name)
     return -1;
 }
 
-/**
- * _getenv - Get Environment variables.
- * @name: Name of the environment variable.
- * Return: Environment Variable.
- */
-char* _getenv(const char* name)
-{
-    size_t name_len = _strlen(name);
-    int i;
-    
-    for (i = 0; environ[i] != NULL; i++)
-    {
-        if (_strncmp(environ[i], name, name_len) == 0 && environ[i][name_len] == '=')
-        {
-            return environ[i] + name_len + 1;
-        }
-    }
-    return NULL;
-}
