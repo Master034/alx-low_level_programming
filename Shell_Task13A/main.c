@@ -5,7 +5,7 @@ int main(void)
 {
     size_t bufsize = 0;
     ssize_t characters;
-    char *path_env = _getenv("PATH"), *path_token = _strtok(path_env, ":"), *command = NULL;
+    char *path_env = getenv("PATH"), *path_token = _strtok(path_env, ":"), *command = NULL;
     char path_command[BUFFER_SIZE];
     int overwrite = 0;
 
