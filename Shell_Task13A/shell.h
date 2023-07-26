@@ -51,5 +51,6 @@ const char *_strchr(const char *s, const char c);
 char *_strdup(const char *str);
 char* _getenv(const char* name);
 void execute_command(char **args, char **path_token, char *path_command);
+void handle_command(char *command, char **path_token, char *path_command, int overwrite);
 
 #endif
