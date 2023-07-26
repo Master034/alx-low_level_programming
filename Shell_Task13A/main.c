@@ -1,6 +1,9 @@
 #include "shell.h"
 
-
+/**
+ * main - main function.
+ * Return: void
+ */
 int main(void)
 {
     size_t bufsize = 0;
