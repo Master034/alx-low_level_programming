@@ -20,7 +20,6 @@ typedef struct AliasInfo {
     struct AliasInfo *next;
 } AliasInfo;
 
-
 extern char **environ;
 
 void tokenizeCommand(char *command, char **args);
