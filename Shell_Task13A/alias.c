@@ -113,7 +113,7 @@ AliasInfo *find_alias(const char *name)
         }
         current = current->next;
     }
-    return NULL;
+    return (NULL);
 }
 
 /**
@@ -131,5 +131,5 @@ void free_alias_list()
         free(current);
         current = next;
     }
-    aliases = NULL;
+    aliases = (NULL);
 }
