@@ -14,6 +14,12 @@
 #define MAX_COMMANDS 10
 #define MAX_ALIASES 50
 
+/**
+ * struct AliasInfo - Used for the Alias.
+ * @name: Name.
+ * @value: Value.
+ * @next: A pointer to another struct list_s.
+ */
 typedef struct AliasInfo {
     char *name;
     char *value;
