@@ -56,7 +56,7 @@ void check_IO(int stat, int fd, char *filename, char mode)
 {
 	int exit_code = 0;
 	const char *error_message = NULL;
-	
+
 	if (stat == -1)
 	{
 		switch (mode)
